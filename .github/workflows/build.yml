@@ -1,0 +1,33 @@
+name: Build and Upload
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PROVIDER_KUROMIS_URL: ${{ secrets.PROVIDER_KUROMIS_URL }}
+      PROVIDER_YTOO_URL: ${{ secrets.PROVIDER_YTOO_URL }}
+      PROVIDER_FLOWER_CLOUD_URL: ${{ secrets.PROVIDER_FLOWER_CLOUD_URL }}
+      OSS_URL_BASE: ${{ secrets.OSS_URL_BASE }}
+      ALIYUN_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+      ALIYUN_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate rules
+        run: npx surgio generate --cache-snippet
+
+      - name: Upload artifacts
+        run: npx surgio upload
