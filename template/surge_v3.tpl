@@ -31,6 +31,7 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 [Proxy]
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
 {{ getSurgeNodes(nodeList) }}
+{{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 
 [Proxy Group]
@@ -49,6 +50,7 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🤖 OpenAI = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🧠 Claude = select, {{ customParams.vpsName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
 💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -76,6 +78,7 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 {{ remoteSnippets.google.main('🔍 Google') }}
 {{ remoteSnippets.microsoft.main('🖥️ Microsoft') }}
 {{ remoteSnippets.openai.main('🤖 OpenAI') }}
+{{ remoteSnippets.claude.main('🧠 Claude') }}
 {{ remoteSnippets.paypal.main('💳 PayPal') }}
 {{ remoteSnippets.apple.main('🍎 Apple') }}
 {{ remoteSnippets.global.main('🌍 Global') }}

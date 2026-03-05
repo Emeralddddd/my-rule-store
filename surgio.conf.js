@@ -9,10 +9,25 @@ const requireEnv = key => {
   }
   return value;
 };
+
+const parseJsonEnv = key => {
+  const value = requireEnv(key);
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    throw new Error(`Invalid JSON in environment variable ${key}: ${error.message}`);
+  }
+};
+
+const surgeVps = parseJsonEnv('SURGE_VPS');
+['server', 'port', 'password'].forEach(field => {
+  if (!surgeVps[field]) {
+    throw new Error(`Missing field "${field}" in environment variable SURGE_VPS`);
+  }
+});
 const customFilters = {
   ytoo: utils.useProviders(['ytoo'], false),
   flowerCloud: utils.useProviders(['flowerCloud'], false),
-  kuromis: utils.useProviders(['kuromis'], false),
 };
 
 /**
@@ -77,6 +92,10 @@ module.exports = {
       url: 'https://raw.githubusercontent.com/AGWA5783/Profiles/master/Surge/Ruleset/Extra/OpenAI/OpenAI.list'
     },
     {
+      name: 'claude',
+      url: 'https://gist.githubusercontent.com/arcthur/49057df74cca1f7ba40ce93d585b3f9b/raw'
+    },
+    {
       name: 'paypal',
       url: 'https://raw.githubusercontent.com/AGWA5783/Profiles/master/Surge/Ruleset/Extra/PayPal.list'
     },
@@ -107,7 +126,7 @@ module.exports = {
       name: 'Full.conf',
       template: 'surge_v3',
       provider: 'demo',
-      combineProviders: ['kuromis','ytoo','flowerCloud'],
+      combineProviders: ['ytoo', 'flowerCloud'],
     },
     // Surge + SSR
     // {
@@ -123,19 +142,19 @@ module.exports = {
       name: 'Full.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['kuromis','ytoo','flowerCloud'],
+      combineProviders: ['ytoo', 'flowerCloud'],
     },
     {
       name: 'Tiny.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['kuromis','ytoo','flowerCloud'],
+      combineProviders: ['ytoo', 'flowerCloud'],
     },
     {
       name: 'QX_Tiny.conf',
-      template:'quantumultx',
-      provider:'demo',
-      combineProviders:['kuromis','ytoo']
+      template: 'quantumultx',
+      provider: 'demo',
+      combineProviders: ['ytoo']
     }
   ],
   /**
@@ -150,6 +169,12 @@ module.exports = {
   },
   customParams: {
     dns: true,
+    vpsName: surgeVps.name || 'vps',
+    vpsServer: surgeVps.server,
+    vpsPort: surgeVps.port,
+    vpsEncryptMethod: surgeVps.encryptMethod || 'chacha20-ietf-poly1305',
+    vpsPassword: surgeVps.password,
+    vpsUnderlyingProxy: surgeVps.underlyingProxy || '🚀 节点选择',
   },
   binPath: {
     // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html

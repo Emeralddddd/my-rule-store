@@ -26,7 +26,17 @@ dns:
     - 101.6.6.6:5353
 {% endif %}
 
-proxies: {{ getClashNodes(nodeList) | json }}
+proxies: {{ (getClashNodes(nodeList).concat([
+  {
+    name: customParams.vpsName,
+    type: 'ss',
+    server: customParams.vpsServer,
+    port: customParams.vpsPort,
+    cipher: customParams.vpsEncryptMethod,
+    password: customParams.vpsPassword,
+    udp: true
+  }
+])) | json }}
 
 proxy-groups:
   - type: select
@@ -97,6 +107,15 @@ proxy-groups:
   - name: 🤖 OpenAI
     type: select
     proxies:
+      - 🚀 节点选择
+      - US
+      - HK
+      - SG
+      - 🎯 全球直连
+  - name: 🧠 Claude
+    type: select
+    proxies:
+      - {{ customParams.vpsName }}
       - 🚀 节点选择
       - US
       - HK
@@ -205,6 +224,7 @@ rules:
 {{ remoteSnippets.google.main('🔍 Google') | clash }}
 {{ remoteSnippets.microsoft.main('🖥️ Microsoft') | clash }}
 {{ remoteSnippets.openai.main('🤖 OpenAI') | clash }}
+{{ remoteSnippets.claude.main('🧠 Claude') | clash }}
 {{ remoteSnippets.paypal.main('💳 PayPal') | clash }}
 {{ remoteSnippets.apple.main('🍎 Apple') | clash }}
 {{ remoteSnippets.global.main('🌍 Global') | clash }}

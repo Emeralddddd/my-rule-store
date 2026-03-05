@@ -30,6 +30,7 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 
 [server_local]
 {{ getQuantumultXNodes(nodeList) }}
+shadowsocks={{ customParams.vpsServer }}:{{ customParams.vpsPort }}, method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, tag={{ customParams.vpsName }}
 
 [server_remote]
 
@@ -48,6 +49,7 @@ static=🎵 Spotify, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-ur
 static=🎮 Steam, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
 static=💬 Telegram, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
 static=🤖 OpenAI, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
+static=🧠 Claude, {{ customParams.vpsName }},🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
 static=💳 PayPal, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
 static=🍎 Apple, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
 static=🔍 Google, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Google.png
@@ -75,6 +77,7 @@ available=🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }},img-url=https
 {{ remoteSnippets.google.main('🔍 Google') | quantumultx}}
 {{ remoteSnippets.microsoft.main('🖥️ Microsoft') | quantumultx}}
 {{ remoteSnippets.openai.main('🤖 OpenAI') | quantumultx}}
+{{ remoteSnippets.claude.main('🧠 Claude') | quantumultx}}
 {{ remoteSnippets.paypal.main('💳 PayPal') | quantumultx}}
 {{ remoteSnippets.apple.main('🍎 Apple') | quantumultx}}
 {{ remoteSnippets.global.main('🌍 Global') | quantumultx}}
