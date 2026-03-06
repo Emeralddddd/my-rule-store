@@ -48,6 +48,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🎬 HBO Max
     type: select
@@ -55,6 +56,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🎬 Netflix
     type: select
@@ -62,6 +64,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🎬 Bahamut
     type: select
@@ -75,6 +78,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 📺 Bilibili
     type: select
@@ -82,6 +86,7 @@ proxy-groups:
       - 🎯 全球直连
       - US
       - HK
+      - JP
       - SG
   - name: 🎵 Spotify
     type: select
@@ -89,6 +94,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🎮 Steam
     type: select
@@ -96,6 +102,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 💬 Telegram
     type: select
@@ -103,6 +110,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🤖 OpenAI
     type: select
@@ -110,6 +118,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
       - 🎯 全球直连
   - name: 🧠 Claude
@@ -119,6 +128,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
       - 🎯 全球直连
   - name: 💳 PayPal
@@ -127,6 +137,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🍎 Apple
     type: select
@@ -135,6 +146,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🔍 Google
     type: select
@@ -143,6 +155,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🖥️ Microsoft
     type: select
@@ -151,6 +164,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🌍 Global
     type: select
@@ -158,6 +172,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🇨🇳 China
     type: select
@@ -166,6 +181,7 @@ proxy-groups:
       - 🚀 节点选择
       - US
       - HK
+      - JP
       - SG
   - name: 🏠 LAN
     type: select

@@ -35,31 +35,33 @@ shadowsocks={{ customParams.vpsServer }}:{{ customParams.vpsPort }}, method={{ c
 [server_remote]
 
 [policy]
-static=🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
 static=🎯 全球直连,direct,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🛑 全球拦截,direct,reject,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Reject.png
 static=🐟 漏网之鱼,🚀 节点选择,🎯 全球直连,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Final.png
-static=🎬 Disney+, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 HBO Max, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 Netflix, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 Bahamut, 🚀 节点选择,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=📺 YouTube, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=📺 Bilibili, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🎵 Spotify, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🎮 Steam, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=💬 Telegram, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
-static=🤖 OpenAI, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
-static=🧠 Claude, {{ customParams.vpsName }},🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
-static=💳 PayPal, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=🍎 Apple, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
-static=🔍 Google, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Google.png
-static=🖥️ Microsoft, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=🌍 Global, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🇨🇳 China, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
+static=🎬 Disney+, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 HBO Max, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 Netflix, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 Bahamut, 🚀 节点选择,🇭🇰 Auto HK,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=📺 YouTube, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=📺 Bilibili, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🎵 Spotify, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🎮 Steam, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=💬 Telegram, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
+static=🤖 OpenAI, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
+static=🧠 Claude, {{ customParams.vpsName }},🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
+static=💳 PayPal, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🍎 Apple, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
+static=🔍 Google, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Google.png
+static=🖥️ Microsoft, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🌍 Global, 🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🇨🇳 China, 🎯 全球直连,🚀 节点选择,🇺🇸 Auto US,🇭🇰 Auto HK,🇯🇵 Auto JP,🇸🇬 Auto SG, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🏠 LAN, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🔓 Unbreak, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 available=🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/US.png
 available=🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/HK.png
+available=🇯🇵 Auto JP, {{ getNodeNames(nodeList, japanFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/JP.png
+available=🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/SG.png
 
 [filter_remote]
 
@@ -82,22 +84,25 @@ available=🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }},img-url=https
 {{ remoteSnippets.apple.main('🍎 Apple') | quantumultx}}
 {{ remoteSnippets.global.main('🌍 Global') | quantumultx}}
 {{ remoteSnippets.china.main('🇨🇳 China') | quantumultx}}
-{{ remoteSnippets.lan.main('DIRECT') | quantumultx}}
+{{ remoteSnippets.lan.main('🏠 LAN') | quantumultx}}
 
+# LAN
 ip-cidr, 10.0.0.0/8, 🎯 全球直连
 ip-cidr, 127.0.0.0/8, 🎯 全球直连
 ip-cidr, 172.16.0.0/12, 🎯 全球直连
 ip-cidr, 192.168.0.0/16, 🎯 全球直连
-ip-cidr, 224.0.0.0/24, 🎯 全球直连
+ip-cidr, 100.64.0.0/10, 🎯 全球直连
+
+# QNAP
+host-keyword, qnap, direct
+
 geoip, cn, 🎯 全球直连
-final, 🚀 节点选择
+final, 🐟 漏网之鱼
 
 [rewrite_remote]
 
 [rewrite_local]
-# 更换 TikTok 区域请修改下方国家代码，默认为韩国 KR
-# 非亚洲区域 App Store 下载的 TikTok 请将 "8.4.0" 修改为 "14.0.0"
-# 使用国内版抖音需使用 ; 注释 (?<=version_code=)\d{1,}.\d{1}\.\d{1} url 307 8.4.0 规则
+# TikTok
 (.*video_id=\w{32})(.*watermark=)(.*) url 302 $1
 (?<=(carrier|account|sys|sim)_region=)CN url 307 KR
 (?<=version_code=)\d{1,}.\d{1}\.\d{1} url 307 8.4.0
