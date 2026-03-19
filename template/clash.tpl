@@ -205,23 +205,35 @@ proxy-groups:
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
-  - type: fallback
-    name: US
+  - name: US
+    type: select
+    proxies: {{ (['Auto US'].concat(getClashNodeNames(nodeList, usFilter))) | json }}
+  - name: Auto US
+    type: fallback
     proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
     url: {{ proxyTestUrl }}
     interval: 1200
-  - type: fallback
-    name: HK
+  - name: HK
+    type: select
+    proxies: {{ (['Auto HK'].concat(getClashNodeNames(nodeList, hkFilter))) | json }}
+  - name: Auto HK
+    type: fallback
     proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
     url: {{ proxyTestUrl }}
     interval: 1200
-  - type: fallback
-    name: JP
+  - name: JP
+    type: select
+    proxies: {{ (['Auto JP'].concat(getClashNodeNames(nodeList, japanFilter))) | json }}
+  - name: Auto JP
+    type: fallback
     proxies: {{ getClashNodeNames(nodeList, japanFilter) | json }}
     url: {{ proxyTestUrl }}
     interval: 1200
-  - type: fallback
-    name: SG
+  - name: SG
+    type: select
+    proxies: {{ (['Auto SG'].concat(getClashNodeNames(nodeList, singaporeFilter))) | json }}
+  - name: Auto SG
+    type: fallback
     proxies: {{ getClashNodeNames(nodeList, singaporeFilter) | json }}
     url: {{ proxyTestUrl }}
     interval: 1200

@@ -31,15 +31,19 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 [Proxy]
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
 {{ getSurgeNodes(nodeList) }}
-{{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
+{{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 
 [Proxy Group]
 🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🇺🇸 美国 = select, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
-🇭🇰 香港 = select, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
-🇯🇵 日本 = select, {{ getNodeNames(nodeList, japanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
-🇸🇬 新加坡 = select, {{ getNodeNames(nodeList, singaporeFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+🇺🇸 美国 = select, 🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }}
+🇺🇸 Auto US = fallback, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+🇭🇰 香港 = select, 🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }}
+🇭🇰 Auto HK = fallback, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+🇯🇵 日本 = select, 🇯🇵 Auto JP, {{ getNodeNames(nodeList, japanFilter) }}
+🇯🇵 Auto JP = fallback, {{ getNodeNames(nodeList, japanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+🇸🇬 新加坡 = select, 🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }}
+🇸🇬 Auto SG = fallback, {{ getNodeNames(nodeList, singaporeFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 🎵 Spotify = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎬 Disney+ = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎬 HBO Max = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡

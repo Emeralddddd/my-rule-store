@@ -126,7 +126,7 @@ module.exports = {
       name: 'Full.conf',
       template: 'surge_v3',
       provider: 'demo',
-      combineProviders: ['ytoo', 'flowerCloud'],
+      combineProviders: ['flowerCloud', 'ytoo'],
     },
     // Surge + SSR
     // {
@@ -142,19 +142,29 @@ module.exports = {
       name: 'Full.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['ytoo', 'flowerCloud'],
+      combineProviders: ['flowerCloud', 'ytoo'],
     },
     {
       name: 'Tiny.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['ytoo', 'flowerCloud'],
+      combineProviders: ['flowerCloud', 'ytoo'],
     },
     {
       name: 'QX_Tiny.conf',
       template: 'quantumultx',
       provider: 'demo',
       combineProviders: ['ytoo']
+    },
+
+    /**
+     * Loon
+     */
+    {
+      name: 'Loon.conf',
+      template: 'loon',
+      provider: 'demo',
+      combineProviders: ['flowerCloud', 'ytoo'],
     }
   ],
   /**
