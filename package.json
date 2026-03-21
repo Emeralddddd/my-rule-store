@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "update": "surgio generate && surgio upload"
+    "update": "surgio generate && surgio upload",
+    "vpn-detect": "node detect-vpn-utun.js",
+    "vpn-watch": "node detect-vpn-utun.js --watch"
   },
   "dependencies": {
+    "global-agent": "^4.1.3",
     "surgio": "file:surgio-3.9.2.tgz"
   }
 }

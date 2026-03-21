@@ -23,6 +23,7 @@ wifi-access-socks5-port = 6153
 http-listen = 0.0.0.0:6152
 socks5-listen = 0.0.0.0:6153
 enhanced-mode-by-rule = false
+http-api = xuzhizhen@127.0.0.1:6171
 
 [Host]
 *.byted.org = script:system-dns
@@ -36,9 +37,12 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 
 [Proxy]
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
-VPN Direct = direct, interface=utun9, allow-other-interface=true
+{%- for i in range(0, 16) %}
+VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
+{%- endfor %}
 {{ getSurgeNodes(nodeList) }}
 {{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
+Claude SOCKS5 Relay = socks5, 168.158.185.238, 6505, username=tnfxiqtu, password=ewajwv6udriy, underlying-proxy=🚀 节点选择
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 
 [Proxy Group]
@@ -61,7 +65,7 @@ VPN Direct = direct, interface=utun9, allow-other-interface=true
 🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🤖 OpenAI = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
-🧠 Claude = select, {{ customParams.vpsName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🧠 Claude = select, {{ customParams.vpsName }}, Claude SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
 💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -72,7 +76,7 @@ VPN Direct = direct, interface=utun9, allow-other-interface=true
 🔓 Unbreak = select, DIRECT
 🎯 全球直连 = select,𝐃𝐢𝐫𝐞𝐜𝐭
 🛑 全球拦截 = select,𝐃𝐢𝐫𝐞𝐜𝐭,𝐑𝐞𝐣𝐞𝐜𝐭
-🏢 内网VPN = select, VPN Direct, DIRECT
+🏢 内网VPN = select, {% for i in range(0, 16) %}VPN utun{{ i }}, {% endfor %}DIRECT
 🐟 漏网之鱼 = select,🚀 节点选择,🎯 全球直连,
 
 [Rule]
