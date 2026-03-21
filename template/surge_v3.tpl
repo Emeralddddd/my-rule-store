@@ -24,12 +24,19 @@ http-listen = 0.0.0.0:6152
 socks5-listen = 0.0.0.0:6153
 enhanced-mode-by-rule = false
 
+[Host]
+*.byted.org = script:system-dns
+*.bytedance.net = script:system-dns
+*.bytedance.com = script:system-dns
+*.volces.com = script:system-dns
+
 [SSID Setting]
 TYPE:CELLULAR tfo-behaviour=force-enabled, cellular-fallback=off
 TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 
 [Proxy]
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
+VPN Direct = direct, interface=utun9, allow-other-interface=true
 {{ getSurgeNodes(nodeList) }}
 {{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
@@ -65,9 +72,16 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 🔓 Unbreak = select, DIRECT
 🎯 全球直连 = select,𝐃𝐢𝐫𝐞𝐜𝐭
 🛑 全球拦截 = select,𝐃𝐢𝐫𝐞𝐜𝐭,𝐑𝐞𝐣𝐞𝐜𝐭
+🏢 内网VPN = select, VPN Direct, DIRECT
 🐟 漏网之鱼 = select,🚀 节点选择,🎯 全球直连,
 
 [Rule]
+
+# ByteDance Internal VPN
+DOMAIN-SUFFIX,byted.org,🏢 内网VPN
+DOMAIN-SUFFIX,bytedance.net,🏢 内网VPN
+DOMAIN-SUFFIX,bytedance.com,🏢 内网VPN
+DOMAIN-SUFFIX,volces.com,🏢 内网VPN
 
 {{ remoteSnippets.unbreak.main('🔓 Unbreak') }}
 {{ remoteSnippets.youtube.main('📺 YouTube') }}
@@ -116,6 +130,7 @@ ca-p12 = MIIJ4QIBAzCCCacGCSqGSIb3DQEHAaCCCZgEggmUMIIJkDCCBEcGCSqGSIb3DQEHBqCCBDg
 
 [Script]
 # > Speed up download app ios
+system-dns = type=dns,script-path=https://raw.githubusercontent.com/Emeralddddd/my-rule-store/main/dns.js
 dnspod = script-path=https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surge/dnspod.js,script-update-interval=0,type=dns
 
 http-response ^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
