@@ -34,6 +34,17 @@ proxies: {{ (getClashNodes(nodeList).concat([
     port: customParams.vpsPort,
     cipher: customParams.vpsEncryptMethod,
     password: customParams.vpsPassword,
+    'dialer-proxy': '🚀 节点选择',
+    udp: true
+  },
+  {
+    name: 'SOCKS5 Relay',
+    type: 'socks5',
+    server: customParams.socks5Server,
+    port: customParams.socks5Port,
+    username: customParams.socks5Username,
+    password: customParams.socks5Password,
+    'dialer-proxy': '🚀 节点选择',
     udp: true
   }
 ])) | json }}

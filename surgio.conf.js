@@ -20,9 +20,15 @@ const parseJsonEnv = key => {
 };
 
 const surgeVps = parseJsonEnv('SURGE_VPS');
+const socks5Relay = parseJsonEnv('SOCKS5_RELAY');
 ['server', 'port', 'password'].forEach(field => {
   if (!surgeVps[field]) {
     throw new Error(`Missing field "${field}" in environment variable SURGE_VPS`);
+  }
+});
+['server', 'port', 'username', 'password'].forEach(field => {
+  if (!socks5Relay[field]) {
+    throw new Error(`Missing field "${field}" in environment variable SOCKS5_RELAY`);
   }
 });
 const customFilters = {
@@ -115,6 +121,10 @@ module.exports = {
       name: 'lan',
       url: 'https://raw.githubusercontent.com/AGWA5783/Profiles/master/Surge/Ruleset/LocalAreaNetwork.list'
     },
+    {
+      name: 'bytedance',
+      url: 'https://raw.githubusercontent.com/Emeralddddd/Snippets/master/bytedance.list'
+    },
   ],
   customFilters: customFilters,
   artifacts: [
@@ -185,6 +195,10 @@ module.exports = {
     vpsEncryptMethod: surgeVps.encryptMethod || 'chacha20-ietf-poly1305',
     vpsPassword: surgeVps.password,
     vpsUnderlyingProxy: surgeVps.underlyingProxy || '🚀 节点选择',
+    socks5Server: socks5Relay.server,
+    socks5Port: socks5Relay.port,
+    socks5Username: socks5Relay.username,
+    socks5Password: socks5Relay.password,
   },
   binPath: {
     // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html

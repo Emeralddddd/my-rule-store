@@ -25,7 +25,7 @@ var domain_suffix = [
 for (var i = 0; i < domain_suffix.length; i++) {
     var suffix = domain_suffix[i];
     if (hostname === suffix.substring(1) || hostname.endsWith(suffix)) {
-        $done({ servers: $network.dns });
+        $done({ servers: ["127.0.0.1"] });
     }
 }
 

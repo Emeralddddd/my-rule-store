@@ -26,10 +26,8 @@ enhanced-mode-by-rule = false
 http-api = xuzhizhen@127.0.0.1:6171
 
 [Host]
-*.byted.org = script:system-dns
-*.bytedance.net = script:system-dns
-*.bytedance.com = script:system-dns
-*.volces.com = script:system-dns
+{% for line in remoteSnippets.bytedance.text.split('\n') %}{% if line.startsWith('DOMAIN-SUFFIX,') %}*.{{ line.split(',')[1] }} = script:system-dns
+{% endif %}{% endfor %}
 
 [SSID Setting]
 TYPE:CELLULAR tfo-behaviour=force-enabled, cellular-fallback=off
@@ -42,7 +40,7 @@ VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 {%- endfor %}
 {{ getSurgeNodes(nodeList) }}
 {{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
-Claude SOCKS5 Relay = socks5, 168.158.185.238, 6505, username=tnfxiqtu, password=ewajwv6udriy, underlying-proxy=🚀 节点选择
+SOCKS5 Relay = socks5, {{ customParams.socks5Server }}, {{ customParams.socks5Port }}, username={{ customParams.socks5Username }}, password={{ customParams.socks5Password }}, underlying-proxy=🚀 节点选择
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 
 [Proxy Group]
@@ -64,8 +62,8 @@ Claude SOCKS5 Relay = socks5, 168.158.185.238, 6505, username=tnfxiqtu, password
 📺 Bilibili = select, 🎯 全球直连, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
-🧠 Claude = select, {{ customParams.vpsName }}, Claude SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🤖 OpenAI = select, {{ customParams.vpsName }}, SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🧠 Claude = select, {{ customParams.vpsName }}, SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
 💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -81,11 +79,13 @@ Claude SOCKS5 Relay = socks5, 168.158.185.238, 6505, username=tnfxiqtu, password
 
 [Rule]
 
+# SOCKS5 Relay
+IP-CIDR,{{ customParams.socks5Server }}/32,🚀 节点选择,no-resolve
+# VPS
+IP-CIDR,{{ customParams.vpsServer }}/32,{{ customParams.vpsUnderlyingProxy }},no-resolve
+
 # ByteDance Internal VPN
-DOMAIN-SUFFIX,byted.org,🏢 内网VPN
-DOMAIN-SUFFIX,bytedance.net,🏢 内网VPN
-DOMAIN-SUFFIX,bytedance.com,🏢 内网VPN
-DOMAIN-SUFFIX,volces.com,🏢 内网VPN
+{{ remoteSnippets.bytedance.main('🏢 内网VPN') }}
 
 {{ remoteSnippets.unbreak.main('🔓 Unbreak') }}
 {{ remoteSnippets.youtube.main('📺 YouTube') }}
@@ -134,7 +134,7 @@ ca-p12 = MIIJ4QIBAzCCCacGCSqGSIb3DQEHAaCCCZgEggmUMIIJkDCCBEcGCSqGSIb3DQEHBqCCBDg
 
 [Script]
 # > Speed up download app ios
-system-dns = type=dns,script-path=https://raw.githubusercontent.com/Emeralddddd/my-rule-store/main/dns.js
+system-dns = type=dns,script-path=https://raw.githubusercontent.com/Emeralddddd/Snippets/master/dns.js
 dnspod = script-path=https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surge/dnspod.js,script-update-interval=0,type=dns
 
 http-response ^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
