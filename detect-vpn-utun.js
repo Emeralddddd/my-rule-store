@@ -24,6 +24,7 @@ const { spawn } = require("child_process");
 const SURGE_API_PORT = process.env.SURGE_API_PORT || 6171;
 const SURGE_API_PASSWORD = process.env.SURGE_API_PASSWORD || "xuzhizhen";
 const GROUP_NAME = "🏢 内网VPN";
+const FALLBACK_POLICY = "DIRECT";
 
 // ============ 核心检测 ============
 
@@ -99,8 +100,8 @@ function log(msg) {
 async function runOnce() {
   const vpn = detectVpnUtun();
   if (!vpn) {
-    log("未检测到 VPN utun 接口（飞连可能未连接）");
-    return false;
+    log(`未检测到 VPN utun 接口（飞连可能未连接），切换到 ${FALLBACK_POLICY}`);
+    return switchGroupPolicy(FALLBACK_POLICY);
   }
   log(`检测到 VPN 接口: ${vpn.name} (${vpn.ip})`);
   const policyName = `VPN ${vpn.name}`;
@@ -113,7 +114,7 @@ function runWatch() {
   console.log("=== VPN utun 监控模式 (基于路由事件) ===");
   console.log("按 Ctrl+C 退出\n");
 
-  let lastIface = null;
+  let lastIface = "__INIT__";
 
   function check() {
     const vpn = detectVpnUtun();
@@ -121,10 +122,13 @@ function runWatch() {
 
     if (currentIface !== lastIface) {
       if (vpn) {
-        log(`VPN 接口变化: ${lastIface || "无"} -> ${vpn.name} (${vpn.ip})`);
+        log(
+          `VPN 接口变化: ${lastIface === "__INIT__" ? "无" : lastIface || "DIRECT"} -> ${vpn.name} (${vpn.ip})`
+        );
         switchGroupPolicy(`VPN ${vpn.name}`);
       } else {
-        log("VPN 接口消失（飞连已断开？）");
+        log(`未检测到 VPN utun 接口，切换到 ${FALLBACK_POLICY}`);
+        switchGroupPolicy(FALLBACK_POLICY);
       }
       lastIface = currentIface;
     }
