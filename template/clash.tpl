@@ -46,6 +46,16 @@ proxies: {{ (getClashNodes(nodeList).concat([
     password: customParams.socks5Password,
     'dialer-proxy': '🚀 节点选择',
     udp: true
+  },
+  {
+    name: customParams.ipRoyalName,
+    type: 'socks5',
+    server: customParams.ipRoyalServer,
+    port: customParams.ipRoyalPort,
+    username: customParams.ipRoyalUsername,
+    password: customParams.ipRoyalPassword,
+    'dialer-proxy': '🚀 节点选择',
+    udp: true
   }
 ])) | json }}
 
@@ -126,6 +136,7 @@ proxy-groups:
   - name: 🤖 OpenAI
     type: select
     proxies:
+      - {{ customParams.ipRoyalName }}
       - 🚀 节点选择
       - US
       - HK
@@ -136,6 +147,7 @@ proxy-groups:
     type: select
     proxies:
       - {{ customParams.vpsName }}
+      - {{ customParams.ipRoyalName }}
       - 🚀 节点选择
       - US
       - HK

@@ -14,6 +14,7 @@ allow-wifi-access = false
 [Proxy]
 {{ getLoonNodes(nodeList) }}
 {{ customParams.vpsName }} = Shadowsocks,{{ customParams.vpsServer }},{{ customParams.vpsPort }},{{ customParams.vpsEncryptMethod }},"{{ customParams.vpsPassword }}",udp=true
+{{ customParams.ipRoyalName }} = socks5,{{ customParams.ipRoyalServer }},{{ customParams.ipRoyalPort }},{{ customParams.ipRoyalUsername }},"{{ customParams.ipRoyalPassword }}",udp=true
 
 [Remote Proxy]
 
@@ -36,8 +37,8 @@ allow-wifi-access = false
 📺 Bilibili = select,🎯 全球直连,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎮 Steam = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
-🧠 Claude = select,{{ customParams.vpsName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
+🤖 OpenAI = select,{{ customParams.ipRoyalName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
+🧠 Claude = select,{{ customParams.vpsName }},{{ customParams.ipRoyalName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
 💳 PayPal = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡

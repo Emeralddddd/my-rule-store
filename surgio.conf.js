@@ -21,6 +21,7 @@ const parseJsonEnv = key => {
 
 const surgeVps = parseJsonEnv('SURGE_VPS');
 const socks5Relay = parseJsonEnv('SOCKS5_RELAY');
+const ipRoyal = parseJsonEnv('IPROYAL');
 ['server', 'port', 'password'].forEach(field => {
   if (!surgeVps[field]) {
     throw new Error(`Missing field "${field}" in environment variable SURGE_VPS`);
@@ -29,6 +30,11 @@ const socks5Relay = parseJsonEnv('SOCKS5_RELAY');
 ['server', 'port', 'username', 'password'].forEach(field => {
   if (!socks5Relay[field]) {
     throw new Error(`Missing field "${field}" in environment variable SOCKS5_RELAY`);
+  }
+});
+['server', 'port', 'username', 'password'].forEach(field => {
+  if (!ipRoyal[field]) {
+    throw new Error(`Missing field "${field}" in environment variable IPROYAL`);
   }
 });
 const customFilters = {
@@ -99,7 +105,7 @@ module.exports = {
     },
     {
       name: 'claude',
-      url: 'https://gist.githubusercontent.com/arcthur/49057df74cca1f7ba40ce93d585b3f9b/raw'
+      url: 'https://raw.githubusercontent.com/Emeralddddd/Snippets/master/claude.list'
     },
     {
       name: 'paypal',
@@ -199,6 +205,11 @@ module.exports = {
     socks5Port: socks5Relay.port,
     socks5Username: socks5Relay.username,
     socks5Password: socks5Relay.password,
+    ipRoyalName: ipRoyal.name || 'IpRoyal',
+    ipRoyalServer: ipRoyal.server,
+    ipRoyalPort: ipRoyal.port,
+    ipRoyalUsername: ipRoyal.username,
+    ipRoyalPassword: ipRoyal.password,
   },
   binPath: {
     // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html
