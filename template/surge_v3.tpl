@@ -34,14 +34,15 @@ TYPE:CELLULAR tfo-behaviour=force-enabled, cellular-fallback=off
 TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 
 [Proxy]
+{{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
+SOCKS5 Relay = socks5, {{ customParams.socks5Server }}, {{ customParams.socks5Port }}, username={{ customParams.socks5Username }}, password={{ customParams.socks5Password }}, udp-relay=true, underlying-proxy=🚀 节点选择
+{{ customParams.ipRoyalName }} = socks5, {{ customParams.ipRoyalServer }}, {{ customParams.ipRoyalPort }}, username={{ customParams.ipRoyalUsername }}, password={{ customParams.ipRoyalPassword }}, udp-relay=true, underlying-proxy=🚀 节点选择
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
+{{ getSurgeNodes(nodeList) }}
+𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 {%- for i in range(0, 16) %}
 VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 {%- endfor %}
-{{ getSurgeNodes(nodeList) }}
-{{ customParams.vpsName }} = ss, {{ customParams.vpsServer }}, {{ customParams.vpsPort }}, encrypt-method={{ customParams.vpsEncryptMethod }}, password={{ customParams.vpsPassword }}, udp-relay=true, underlying-proxy={{ customParams.vpsUnderlyingProxy }}
-SOCKS5 Relay = socks5, {{ customParams.socks5Server }}, {{ customParams.socks5Port }}, username={{ customParams.socks5Username }}, password={{ customParams.socks5Password }}, udp-relay=true, underlying-proxy=🚀 节点选择
-𝐑𝐞𝐣𝐞𝐜𝐭 = reject
 
 [Proxy Group]
 🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -62,8 +63,8 @@ SOCKS5 Relay = socks5, {{ customParams.socks5Server }}, {{ customParams.socks5Po
 📺 Bilibili = select, 🎯 全球直连, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select, {{ customParams.vpsName }}, SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
-🧠 Claude = select, {{ customParams.vpsName }}, SOCKS5 Relay, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🤖 OpenAI = select, {{ customParams.vpsName }}, SOCKS5 Relay, {{ customParams.ipRoyalName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
+🧠 Claude = select, {{ customParams.vpsName }}, SOCKS5 Relay, {{ customParams.ipRoyalName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
 💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -81,6 +82,8 @@ SOCKS5 Relay = socks5, {{ customParams.socks5Server }}, {{ customParams.socks5Po
 
 # SOCKS5 Relay
 IP-CIDR,{{ customParams.socks5Server }}/32,🚀 节点选择,no-resolve
+# IpRoyal
+IP-CIDR,{{ customParams.ipRoyalServer }}/32,🚀 节点选择,no-resolve
 # VPS
 IP-CIDR,{{ customParams.vpsServer }}/32,{{ customParams.vpsUnderlyingProxy }},no-resolve
 
@@ -116,7 +119,7 @@ RULE-SET,LAN,DIRECT
 # QNAP
 DOMAIN-KEYWORD,qnap,DIRECT
 
-# GeoIP CN
+# GeoIP CN fallback keeps uncategorized mainland sites reachable.
 GEOIP,CN,DIRECT
 
 # Final
