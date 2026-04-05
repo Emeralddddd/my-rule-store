@@ -14,12 +14,15 @@ allow-wifi-access = false
 [Proxy]
 {{ getLoonNodes(nodeList) }}
 {{ customParams.vpsName }} = Shadowsocks,{{ customParams.vpsServer }},{{ customParams.vpsPort }},{{ customParams.vpsEncryptMethod }},"{{ customParams.vpsPassword }}",udp=true
-{{ customParams.ipRoyalName }} = socks5,{{ customParams.ipRoyalServer }},{{ customParams.ipRoyalPort }},{{ customParams.ipRoyalUsername }},"{{ customParams.ipRoyalPassword }}",udp=true
+{% for relayNode in customParams.relayNodes %}
+{{ relayNode.name }} = socks5,{{ relayNode.server }},{{ relayNode.port }},{{ relayNode.username }},"{{ relayNode.password }}",udp=true
+{% endfor %}
 
 [Remote Proxy]
 
 [Proxy Group]
 🚀 节点选择 = select,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
+{{ customParams.relayProxyGroupName }} = select,{% for relayNodeName in customParams.relayNodeGroupMembers %}{{ relayNodeName }}{% if not loop.last %},{% endif %}{% endfor %}
 🇺🇸 美国 = select,🇺🇸 Auto US,{{ getLoonNodeNames(nodeList, usFilter) }}
 🇺🇸 Auto US = fallback,{{ getLoonNodeNames(nodeList, usFilter) }},url={{ proxyTestUrl }},interval=1200
 🇭🇰 香港 = select,🇭🇰 Auto HK,{{ getLoonNodeNames(nodeList, hkFilter) }}
@@ -37,8 +40,8 @@ allow-wifi-access = false
 📺 Bilibili = select,🎯 全球直连,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🎮 Steam = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 💬 Telegram = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select,{{ customParams.ipRoyalName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
-🧠 Claude = select,{{ customParams.vpsName }},{{ customParams.ipRoyalName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
+🤖 OpenAI = select,{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
+🧠 Claude = select,{{ customParams.vpsName }},{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
 💳 PayPal = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🍎 Apple = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
 🔍 Google = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
@@ -70,6 +73,7 @@ allow-wifi-access = false
 {{ remoteSnippets.claude.main('🧠 Claude') | loon }}
 {{ remoteSnippets.paypal.main('💳 PayPal') | loon }}
 {{ remoteSnippets.apple.main('🍎 Apple') | loon }}
+{{ remoteSnippets.providerSubscription.main('DIRECT') | loon }}
 {{ remoteSnippets.global.main('🌍 Global') | loon }}
 {{ remoteSnippets.china.main('🇨🇳 China') | loon }}
 {{ remoteSnippets.lan.main('🏠 LAN') | loon }}

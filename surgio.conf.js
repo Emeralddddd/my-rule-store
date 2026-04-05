@@ -19,28 +19,55 @@ const parseJsonEnv = key => {
   }
 };
 
+const ensureFields = (value, fields, key) => {
+  fields.forEach(field => {
+    if (!value[field]) {
+      throw new Error(`Missing field "${field}" in environment variable ${key}`);
+    }
+  });
+};
+
+const normalizeRelayNode = (value, key, fallbackName) => {
+  const relayNode = {
+    name: value.name || fallbackName,
+    type: value.type || 'socks5',
+    server: value.server,
+    port: value.port,
+    username: value.username,
+    password: value.password,
+    underlyingProxy: value.underlyingProxy || '🚀 节点选择',
+  };
+  if (relayNode.type !== 'socks5') {
+    throw new Error(`Unsupported relay node type "${relayNode.type}" in ${key}`);
+  }
+  ensureFields(relayNode, ['server', 'port', 'username', 'password'], key);
+  return relayNode;
+};
+
+const parseRelayNodes = () => {
+  const relayNodes = parseJsonEnv('RELAY_NODES');
+  if (!Array.isArray(relayNodes)) {
+    throw new Error('Environment variable RELAY_NODES must be a JSON array');
+  }
+  return relayNodes.map((relayNode, index) =>
+    normalizeRelayNode(relayNode, `RELAY_NODES[${index}]`, `Relay ${index + 1}`)
+  );
+};
+
+const isIpv4Address = value => /^\d{1,3}(?:\.\d{1,3}){3}$/.test(value);
+
 const surgeVps = parseJsonEnv('SURGE_VPS');
-const socks5Relay = parseJsonEnv('SOCKS5_RELAY');
-const ipRoyal = parseJsonEnv('IPROYAL');
-['server', 'port', 'password'].forEach(field => {
-  if (!surgeVps[field]) {
-    throw new Error(`Missing field "${field}" in environment variable SURGE_VPS`);
-  }
-});
-['server', 'port', 'username', 'password'].forEach(field => {
-  if (!socks5Relay[field]) {
-    throw new Error(`Missing field "${field}" in environment variable SOCKS5_RELAY`);
-  }
-});
-['server', 'port', 'username', 'password'].forEach(field => {
-  if (!ipRoyal[field]) {
-    throw new Error(`Missing field "${field}" in environment variable IPROYAL`);
-  }
-});
+const relayNodes = parseRelayNodes();
+ensureFields(surgeVps, ['server', 'port', 'password'], 'SURGE_VPS');
 const customFilters = {
   ytoo: utils.useProviders(['ytoo'], false),
   flowerCloud: utils.useProviders(['flowerCloud'], false),
 };
+
+const relayProxyGroupName = '🪜 中转节点';
+const relayNodeGroupMembers = relayNodes.length
+  ? relayNodes.map(relayNode => relayNode.name)
+  : ['DIRECT'];
 
 /**
  * 使用文档：https://surgio.royli.dev/
@@ -131,6 +158,10 @@ module.exports = {
       name: 'bytedance',
       url: 'https://raw.githubusercontent.com/Emeralddddd/Snippets/master/bytedance.list'
     },
+    {
+      name: 'providerSubscription',
+      url: 'https://raw.githubusercontent.com/Emeralddddd/Snippets/master/provider-subscription.list'
+    },
   ],
   customFilters: customFilters,
   artifacts: [
@@ -201,15 +232,20 @@ module.exports = {
     vpsEncryptMethod: surgeVps.encryptMethod || 'chacha20-ietf-poly1305',
     vpsPassword: surgeVps.password,
     vpsUnderlyingProxy: surgeVps.underlyingProxy || '🚀 节点选择',
-    socks5Server: socks5Relay.server,
-    socks5Port: socks5Relay.port,
-    socks5Username: socks5Relay.username,
-    socks5Password: socks5Relay.password,
-    ipRoyalName: ipRoyal.name || 'IpRoyal',
-    ipRoyalServer: ipRoyal.server,
-    ipRoyalPort: ipRoyal.port,
-    ipRoyalUsername: ipRoyal.username,
-    ipRoyalPassword: ipRoyal.password,
+    relayProxyGroupName,
+    relayNodes,
+    relayNodeGroupMembers,
+    relayNodesWithIpServer: relayNodes.filter(relayNode => isIpv4Address(relayNode.server)),
+    relayClashProxies: relayNodes.map(relayNode => ({
+      name: relayNode.name,
+      type: relayNode.type,
+      server: relayNode.server,
+      port: relayNode.port,
+      username: relayNode.username,
+      password: relayNode.password,
+      'dialer-proxy': relayNode.underlyingProxy,
+      udp: true,
+    })),
   },
   binPath: {
     // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html

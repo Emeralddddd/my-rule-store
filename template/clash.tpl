@@ -36,33 +36,19 @@ proxies: {{ (getClashNodes(nodeList).concat([
     password: customParams.vpsPassword,
     'dialer-proxy': '🚀 节点选择',
     udp: true
-  },
-  {
-    name: 'SOCKS5 Relay',
-    type: 'socks5',
-    server: customParams.socks5Server,
-    port: customParams.socks5Port,
-    username: customParams.socks5Username,
-    password: customParams.socks5Password,
-    'dialer-proxy': '🚀 节点选择',
-    udp: true
-  },
-  {
-    name: customParams.ipRoyalName,
-    type: 'socks5',
-    server: customParams.ipRoyalServer,
-    port: customParams.ipRoyalPort,
-    username: customParams.ipRoyalUsername,
-    password: customParams.ipRoyalPassword,
-    'dialer-proxy': '🚀 节点选择',
-    udp: true
   }
-])) | json }}
+]).concat(customParams.relayClashProxies)) | json }}
 
 proxy-groups:
   - type: select
     name: 🚀 节点选择
     proxies: ['HK','US','JP','SG']
+  - name: {{ customParams.relayProxyGroupName }}
+    type: select
+    proxies:
+{% for relayNodeName in customParams.relayNodeGroupMembers %}
+      - {{ relayNodeName }}
+{% endfor %}
   - name: 🎬 Disney+
     type: select
     proxies:
@@ -136,7 +122,7 @@ proxy-groups:
   - name: 🤖 OpenAI
     type: select
     proxies:
-      - {{ customParams.ipRoyalName }}
+      - {{ customParams.relayProxyGroupName }}
       - 🚀 节点选择
       - US
       - HK
@@ -147,7 +133,7 @@ proxy-groups:
     type: select
     proxies:
       - {{ customParams.vpsName }}
-      - {{ customParams.ipRoyalName }}
+      - {{ customParams.relayProxyGroupName }}
       - 🚀 节点选择
       - US
       - HK
@@ -278,6 +264,7 @@ rules:
 {{ remoteSnippets.claude.main('🧠 Claude') | clash }}
 {{ remoteSnippets.paypal.main('💳 PayPal') | clash }}
 {{ remoteSnippets.apple.main('🍎 Apple') | clash }}
+{{ remoteSnippets.providerSubscription.main('DIRECT') | clash }}
 {{ remoteSnippets.global.main('🌍 Global') | clash }}
 {{ remoteSnippets.china.main('🇨🇳 China') | clash }}
 {{ remoteSnippets.lan.main('🏠 LAN') | clash }}
@@ -294,5 +281,5 @@ rules:
 - DOMAIN-KEYWORD,qnap,DIRECT
 
 # Final
-- GEOIP,CN,DIRECT
+- GEOIP,CN,DIRECT,no-resolve
 - MATCH,🐟 漏网之鱼
