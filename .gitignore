@@ -4,3 +4,7 @@ node_modules
 /.env
 /dist
 /log/
+
+# Keep repository instruction files tracked even if globally ignored.
+!AGENTS.md
+!CLAUDE.md
