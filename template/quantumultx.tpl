@@ -38,28 +38,28 @@ socks5={{ relayNode.server }}:{{ relayNode.port }}, username={{ relayNode.userna
 [server_remote]
 
 [policy]
-static=🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
 static={{ customParams.relayProxyGroupName }},{% for relayNodeName in customParams.relayNodeGroupMembers %}{{ relayNodeName }}{% if not loop.last %},{% endif %}{% endfor %},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
 static=🎯 全球直连,direct,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🛑 全球拦截,direct,reject,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Reject.png
 static=🐟 漏网之鱼,🚀 节点选择,🎯 全球直连,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Final.png
-static=🎬 Disney+, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 HBO Max, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 Netflix, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=🎬 Bahamut, 🚀 节点选择,🇭🇰 香港,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
-static=📺 YouTube, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=📺 Bilibili, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🎵 Spotify, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🎮 Steam, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=💬 Telegram, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
-static=🤖 OpenAI, {{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
-static=🧠 Claude, {{ customParams.vpsName }},{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
-static=💳 PayPal, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=🍎 Apple, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
-static=🔍 Google, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Google.png
-static=🖥️ Microsoft, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
-static=🌍 Global, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
-static=🇨🇳 China, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
+static=🎬 Disney+, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 HBO Max, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 Netflix, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=🎬 Bahamut, 🚀 节点选择,🇭🇰 香港,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix.png
+static=📺 YouTube, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=📺 Bilibili, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🎵 Spotify, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🎮 Steam, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=💬 Telegram, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
+static=🤖 OpenAI, {{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
+static=🧠 Claude, {{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾,🎯 全球直连, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ChatGPT.png
+static=💳 PayPal, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🍎 Apple, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
+static=🔍 Google, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Google.png
+static=🖥️ Microsoft, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Proxy.png
+static=🌍 Global, 🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/GlobalMedia.png
+static=🇨🇳 China, 🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🏠 LAN, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🔓 Unbreak, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Direct.png
 static=🇺🇸 美国, 🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/US.png
@@ -70,6 +70,8 @@ static=🇯🇵 日本, 🇯🇵 Auto JP, {{ getNodeNames(nodeList, japanFilter)
 available=🇯🇵 Auto JP, {{ getNodeNames(nodeList, japanFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/JP.png
 static=🇸🇬 新加坡, 🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/SG.png
 available=🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/SG.png
+static=🇹🇼 台湾, 🇹🇼 Auto TW, {{ getNodeNames(nodeList, taiwanFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/TW.png
+available=🇹🇼 Auto TW, {{ getNodeNames(nodeList, taiwanFilter) }},img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/TW.png
 
 [filter_remote]
 

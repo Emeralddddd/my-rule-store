@@ -59,15 +59,17 @@ const isIpv4Address = value => /^\d{1,3}(?:\.\d{1,3}){3}$/.test(value);
 const surgeVps = parseJsonEnv('SURGE_VPS');
 const relayNodes = parseRelayNodes();
 ensureFields(surgeVps, ['server', 'port', 'password'], 'SURGE_VPS');
+const vpsName = surgeVps.name || 'vps';
 const customFilters = {
   ytoo: utils.useProviders(['ytoo'], false),
   flowerCloud: utils.useProviders(['flowerCloud'], false),
 };
 
 const relayProxyGroupName = '🪜 中转节点';
-const relayNodeGroupMembers = relayNodes.length
-  ? relayNodes.map(relayNode => relayNode.name)
-  : ['DIRECT'];
+const relayNodeGroupMembers = [
+  vpsName,
+  ...relayNodes.map(relayNode => relayNode.name),
+];
 
 /**
  * 使用文档：https://surgio.royli.dev/
@@ -226,7 +228,7 @@ module.exports = {
   },
   customParams: {
     dns: true,
-    vpsName: surgeVps.name || 'vps',
+    vpsName,
     vpsServer: surgeVps.server,
     vpsPort: surgeVps.port,
     vpsEncryptMethod: surgeVps.encryptMethod || 'chacha20-ietf-poly1305',

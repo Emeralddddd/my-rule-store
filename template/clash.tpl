@@ -42,7 +42,7 @@ proxies: {{ (getClashNodes(nodeList).concat([
 proxy-groups:
   - type: select
     name: 🚀 节点选择
-    proxies: ['HK','US','JP','SG']
+    proxies: ['HK','US','JP','SG','TW']
   - name: {{ customParams.relayProxyGroupName }}
     type: select
     proxies:
@@ -57,6 +57,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🎬 HBO Max
     type: select
     proxies:
@@ -65,6 +66,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🎬 Netflix
     type: select
     proxies:
@@ -73,12 +75,14 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🎬 Bahamut
     type: select
     proxies:
       - 🚀 节点选择
       - HK
       - SG
+      - TW
   - name: 📺 YouTube
     type: select
     proxies:
@@ -87,6 +91,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 📺 Bilibili
     type: select
     proxies:
@@ -95,6 +100,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🎵 Spotify
     type: select
     proxies:
@@ -103,6 +109,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🎮 Steam
     type: select
     proxies:
@@ -111,6 +118,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 💬 Telegram
     type: select
     proxies:
@@ -119,6 +127,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🤖 OpenAI
     type: select
     proxies:
@@ -128,17 +137,18 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
       - 🎯 全球直连
   - name: 🧠 Claude
     type: select
     proxies:
-      - {{ customParams.vpsName }}
       - {{ customParams.relayProxyGroupName }}
       - 🚀 节点选择
       - US
       - HK
       - JP
       - SG
+      - TW
       - 🎯 全球直连
   - name: 💳 PayPal
     type: select
@@ -148,6 +158,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🍎 Apple
     type: select
     proxies:
@@ -157,6 +168,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🔍 Google
     type: select
     proxies:
@@ -166,6 +178,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🖥️ Microsoft
     type: select
     proxies:
@@ -175,6 +188,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🌍 Global
     type: select
     proxies:
@@ -183,6 +197,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🇨🇳 China
     type: select
     proxies:
@@ -192,6 +207,7 @@ proxy-groups:
       - HK
       - JP
       - SG
+      - TW
   - name: 🏠 LAN
     type: select
     proxies:
@@ -244,6 +260,14 @@ proxy-groups:
   - name: Auto SG
     type: fallback
     proxies: {{ getClashNodeNames(nodeList, singaporeFilter) | json }}
+    url: {{ proxyTestUrl }}
+    interval: 1200
+  - name: TW
+    type: select
+    proxies: {{ (['Auto TW'].concat(getClashNodeNames(nodeList, taiwanFilter))) | json }}
+  - name: Auto TW
+    type: fallback
+    proxies: {{ getClashNodeNames(nodeList, taiwanFilter) | json }}
     url: {{ proxyTestUrl }}
     interval: 1200
 

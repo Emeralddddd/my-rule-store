@@ -4,8 +4,9 @@
 bypass-system = true
 skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,17.0.0.0/8,localhost,*.local,passenger.t3go.cn
 bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.18.0.0/15,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
-encrypted-dns-server = https://dns.alidns.com/dns-query, https://doh.pub/dns-query
-encrypted-dns-follow-outbound-mode = true
+dns-server = 223.5.5.5, 119.29.29.29
+encrypted-dns-server = https://223.5.5.5/dns-query, https://1.12.12.12/dns-query
+encrypted-dns-follow-outbound-mode = false
 hijack-dns = 8.8.8.8:53, 8.8.4.4:53
 loglevel = notify
 replica = false
@@ -47,7 +48,8 @@ VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 {%- endfor %}
 
 [Proxy Group]
-🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
+🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+{{ customParams.relayProxyGroupName }} = select, {% for name in customParams.relayNodeGroupMembers %}{{ name }}{% if not loop.last %}, {% endif %}{% endfor %}
 🇺🇸 美国 = select, 🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }}
 🇺🇸 Auto US = fallback, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 🇭🇰 香港 = select, 🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }}
@@ -56,23 +58,25 @@ VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 🇯🇵 Auto JP = fallback, {{ getNodeNames(nodeList, japanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 🇸🇬 新加坡 = select, 🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }}
 🇸🇬 Auto SG = fallback, {{ getNodeNames(nodeList, singaporeFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
-🎵 Spotify = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Disney+ = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 HBO Max = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Netflix = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Bahamut = select, 🚀 节点选择, 🇭🇰 香港,🇸🇬 新加坡
-📺 YouTube = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-📺 Bilibili = select, 🎯 全球直连, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select, {{ customParams.vpsName }}, {% for name in customParams.relayNodeGroupMembers %}{{ name }}, {% endfor %}🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
-🧠 Claude = select, {{ customParams.vpsName }}, {% for name in customParams.relayNodeGroupMembers %}{{ name }}, {% endfor %}🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡, 🎯 全球直连
-💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🖥️ Microsoft = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🌍 Global = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🇨🇳 China = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
+🇹🇼 台湾 = select, 🇹🇼 Auto TW, {{ getNodeNames(nodeList, taiwanFilter) }}
+🇹🇼 Auto TW = fallback, {{ getNodeNames(nodeList, taiwanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+🎵 Spotify = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Disney+ = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 HBO Max = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Netflix = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Bahamut = select, 🚀 节点选择, 🇭🇰 香港,🇸🇬 新加坡,🇹🇼 台湾
+📺 YouTube = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+📺 Bilibili = select, 🎯 全球直连, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎮 Steam = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+💬 Telegram = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🤖 OpenAI = select, {{ customParams.relayProxyGroupName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, 🎯 全球直连
+🧠 Claude = select, {{ customParams.relayProxyGroupName }}, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾, 🎯 全球直连
+💳 PayPal = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🍎 Apple = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🔍 Google = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🖥️ Microsoft = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🌍 Global = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🇨🇳 China = select, 🎯 全球直连, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 🏠 LAN = select, DIRECT
 🔓 Unbreak = select, DIRECT
 🎯 全球直连 = select,𝐃𝐢𝐫𝐞𝐜𝐭
@@ -93,6 +97,8 @@ IP-CIDR,{{ customParams.vpsServer }}/32,{{ customParams.vpsUnderlyingProxy }},no
 {{ remoteSnippets.bytedance.main('🏢 内网VPN') }}
 
 {{ remoteSnippets.unbreak.main('🔓 Unbreak') }}
+{{ remoteSnippets.openai.main('🤖 OpenAI') }}
+{{ remoteSnippets.claude.main('🧠 Claude') }}
 {{ remoteSnippets.youtube.main('📺 YouTube') }}
 {{ remoteSnippets.disney.main('🎬 Disney+') }}
 {{ remoteSnippets.hbomax.main('🎬 HBO Max') }}
@@ -104,8 +110,6 @@ IP-CIDR,{{ customParams.vpsServer }}/32,{{ customParams.vpsUnderlyingProxy }},no
 {{ remoteSnippets.telegram.main('💬 Telegram') }}
 {{ remoteSnippets.google.main('🔍 Google') }}
 {{ remoteSnippets.microsoft.main('🖥️ Microsoft') }}
-{{ remoteSnippets.openai.main('🤖 OpenAI') }}
-{{ remoteSnippets.claude.main('🧠 Claude') }}
 {{ remoteSnippets.paypal.main('💳 PayPal') }}
 {{ remoteSnippets.apple.main('🍎 Apple') }}
 {{ remoteSnippets.global.main('🌍 Global') }}

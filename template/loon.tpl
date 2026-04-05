@@ -21,7 +21,7 @@ allow-wifi-access = false
 [Remote Proxy]
 
 [Proxy Group]
-🚀 节点选择 = select,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
+🚀 节点选择 = select,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 {{ customParams.relayProxyGroupName }} = select,{% for relayNodeName in customParams.relayNodeGroupMembers %}{{ relayNodeName }}{% if not loop.last %},{% endif %}{% endfor %}
 🇺🇸 美国 = select,🇺🇸 Auto US,{{ getLoonNodeNames(nodeList, usFilter) }}
 🇺🇸 Auto US = fallback,{{ getLoonNodeNames(nodeList, usFilter) }},url={{ proxyTestUrl }},interval=1200
@@ -31,23 +31,25 @@ allow-wifi-access = false
 🇯🇵 Auto JP = fallback,{{ getLoonNodeNames(nodeList, japanFilter) }},url={{ proxyTestUrl }},interval=1200
 🇸🇬 新加坡 = select,🇸🇬 Auto SG,{{ getLoonNodeNames(nodeList, singaporeFilter) }}
 🇸🇬 Auto SG = fallback,{{ getLoonNodeNames(nodeList, singaporeFilter) }},url={{ proxyTestUrl }},interval=1200
-🎵 Spotify = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Disney+ = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 HBO Max = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Netflix = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎬 Bahamut = select,🚀 节点选择,🇭🇰 香港,🇸🇬 新加坡
-📺 YouTube = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-📺 Bilibili = select,🎯 全球直连,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🎮 Steam = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-💬 Telegram = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🤖 OpenAI = select,{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
-🧠 Claude = select,{{ customParams.vpsName }},{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🎯 全球直连
-💳 PayPal = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🍎 Apple = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🔍 Google = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🖥️ Microsoft = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🌍 Global = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
-🇨🇳 China = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡
+🇹🇼 台湾 = select,🇹🇼 Auto TW,{{ getLoonNodeNames(nodeList, taiwanFilter) }}
+🇹🇼 Auto TW = fallback,{{ getLoonNodeNames(nodeList, taiwanFilter) }},url={{ proxyTestUrl }},interval=1200
+🎵 Spotify = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Disney+ = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 HBO Max = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Netflix = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎬 Bahamut = select,🚀 节点选择,🇭🇰 香港,🇸🇬 新加坡,🇹🇼 台湾
+📺 YouTube = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+📺 Bilibili = select,🎯 全球直连,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🎮 Steam = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+💬 Telegram = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🤖 OpenAI = select,{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾,🎯 全球直连
+🧠 Claude = select,{{ customParams.relayProxyGroupName }},🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾,🎯 全球直连
+💳 PayPal = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🍎 Apple = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🔍 Google = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🖥️ Microsoft = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🌍 Global = select,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
+🇨🇳 China = select,🎯 全球直连,🚀 节点选择,🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 🏠 LAN = select,DIRECT
 🔓 Unbreak = select,DIRECT
 🎯 全球直连 = select,DIRECT
