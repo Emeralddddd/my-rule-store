@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "update": "surgio generate && surgio upload",
+    "validate:surge": "./scripts/validate-surge-profile.sh dist/Full.conf",
+    "update": "surgio generate && npm run validate:surge && surgio upload",
     "vpn-detect": "node detect-vpn-utun.js",
     "vpn-watch": "node detect-vpn-utun.js --watch"
   },

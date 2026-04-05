@@ -7,7 +7,7 @@ bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,1
 dns-server = 223.5.5.5, 119.29.29.29
 encrypted-dns-server = https://223.5.5.5/dns-query, https://1.12.12.12/dns-query
 encrypted-dns-follow-outbound-mode = false
-hijack-dns = 8.8.8.8:53, 8.8.4.4:53
+hijack-dns = 8.8.8.8:53, 8.8.4.4:53, 1.1.1.1:53, 1.0.0.1:53, 9.9.9.9:53, 149.112.112.112:53
 loglevel = notify
 replica = false
 tls-provider = default
@@ -18,12 +18,12 @@ always-real-ip = *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.co
 internet-test-url = http://www.aliyun.com
 proxy-test-url = http://www.gstatic.com/generate_204
 # iOS Only
-allow-wifi-access = true
+allow-wifi-access = false
 wifi-access-http-port = 6152
 wifi-access-socks5-port = 6153
 # macOS Only
-http-listen = 0.0.0.0:6152
-socks5-listen = 0.0.0.0:6153
+http-listen = 127.0.0.1:6152
+socks5-listen = 127.0.0.1:6153
 enhanced-mode-by-rule = false
 http-api = xuzhizhen@127.0.0.1:6171
 
@@ -51,15 +51,20 @@ VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 {{ customParams.relayProxyGroupName }} = select, {% for name in customParams.relayNodeGroupMembers %}{{ name }}{% if not loop.last %}, {% endif %}{% endfor %}
 🇺🇸 美国 = select, 🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }}
-🇺🇸 Auto US = fallback, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+#!REQUIREMENT CORE_VERSION>=22 🇺🇸 Auto US = smart, {{ getNodeNames(nodeList, usFilter) }}
+🇺🇸 Auto US = fallback, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200 //!REQUIREMENT CORE_VERSION<22
 🇭🇰 香港 = select, 🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }}
-🇭🇰 Auto HK = fallback, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+#!REQUIREMENT CORE_VERSION>=22 🇭🇰 Auto HK = smart, {{ getNodeNames(nodeList, hkFilter) }}
+🇭🇰 Auto HK = fallback, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200 //!REQUIREMENT CORE_VERSION<22
 🇯🇵 日本 = select, 🇯🇵 Auto JP, {{ getNodeNames(nodeList, japanFilter) }}
-🇯🇵 Auto JP = fallback, {{ getNodeNames(nodeList, japanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+#!REQUIREMENT CORE_VERSION>=22 🇯🇵 Auto JP = smart, {{ getNodeNames(nodeList, japanFilter) }}
+🇯🇵 Auto JP = fallback, {{ getNodeNames(nodeList, japanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200 //!REQUIREMENT CORE_VERSION<22
 🇸🇬 新加坡 = select, 🇸🇬 Auto SG, {{ getNodeNames(nodeList, singaporeFilter) }}
-🇸🇬 Auto SG = fallback, {{ getNodeNames(nodeList, singaporeFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+#!REQUIREMENT CORE_VERSION>=22 🇸🇬 Auto SG = smart, {{ getNodeNames(nodeList, singaporeFilter) }}
+🇸🇬 Auto SG = fallback, {{ getNodeNames(nodeList, singaporeFilter) }}, url = {{ proxyTestUrl }}, interval = 1200 //!REQUIREMENT CORE_VERSION<22
 🇹🇼 台湾 = select, 🇹🇼 Auto TW, {{ getNodeNames(nodeList, taiwanFilter) }}
-🇹🇼 Auto TW = fallback, {{ getNodeNames(nodeList, taiwanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+#!REQUIREMENT CORE_VERSION>=22 🇹🇼 Auto TW = smart, {{ getNodeNames(nodeList, taiwanFilter) }}
+🇹🇼 Auto TW = fallback, {{ getNodeNames(nodeList, taiwanFilter) }}, url = {{ proxyTestUrl }}, interval = 1200 //!REQUIREMENT CORE_VERSION<22
 🎵 Spotify = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 🎬 Disney+ = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
 🎬 HBO Max = select, 🚀 节点选择, 🇺🇸 美国, 🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
