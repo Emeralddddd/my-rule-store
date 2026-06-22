@@ -106,7 +106,7 @@ module.exports = {
     },
     {
       name: 'bilibili',
-      url: 'https://raw.githubusercontent.com/AGWA5783/Profiles/master/Surge/Ruleset/StreamingMedia/StreamingSE.list'
+      url: 'https://raw.githubusercontent.com/Emeralddddd/Snippets/master/streaming-se.list'
     },
     {
       name: 'spotify',
@@ -175,7 +175,7 @@ module.exports = {
       name: 'Full.conf',
       template: 'surge_v3',
       provider: 'demo',
-      combineProviders: ['flowerCloud', 'ytoo'],
+      combineProviders: ['ytoo'],
     },
     // Surge + SSR
     // {
@@ -191,13 +191,13 @@ module.exports = {
       name: 'Full.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['flowerCloud', 'ytoo'],
+      combineProviders: ['ytoo'],
     },
     {
       name: 'Tiny.yaml',
       template: 'clash',
       provider: 'demo',
-      combineProviders: ['flowerCloud', 'ytoo'],
+      combineProviders: ['ytoo'],
     },
     {
       name: 'QX_Tiny.conf',
@@ -213,7 +213,7 @@ module.exports = {
       name: 'Loon.conf',
       template: 'loon',
       provider: 'demo',
-      combineProviders: ['flowerCloud', 'ytoo'],
+      combineProviders: ['ytoo'],
     }
   ],
   /**
@@ -228,6 +228,18 @@ module.exports = {
   },
   customParams: {
     dns: true,
+    companyDomainSuffixes: [
+      'byted.org',
+      'bytedance.net',
+      'bytedance.com',
+      'volces.com',
+      'tiktok-row.org',
+      'tiktok-row.net',
+      'bytedapm.com',
+      'dcarlife.net',
+      'iesdouyin.com',
+      'eden.proxy',
+    ],
     vpsName,
     vpsServer: surgeVps.server,
     vpsPort: surgeVps.port,

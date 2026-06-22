@@ -28,8 +28,8 @@ enhanced-mode-by-rule = false
 http-api = xuzhizhen@127.0.0.1:6171
 
 [Host]
-{% for line in remoteSnippets.bytedance.text.split('\n') %}{% if line.startsWith('DOMAIN-SUFFIX,') %}*.{{ line.split(',')[1] }} = script:system-dns
-{% endif %}{% endfor %}
+{% for d in customParams.companyDomainSuffixes %}*.{{ d }} = script:system-dns
+{% endfor %}
 
 [SSID Setting]
 TYPE:CELLULAR tfo-behaviour=force-enabled, cellular-fallback=off
@@ -43,9 +43,6 @@ TYPE:WIFI tfo-behaviour=force-enabled, cellular-fallback=off
 𝐃𝐢𝐫𝐞𝐜𝐭 = direct
 {{ getSurgeNodes(nodeList) }}
 𝐑𝐞𝐣𝐞𝐜𝐭 = reject
-{%- for i in range(0, 16) %}
-VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
-{%- endfor %}
 
 [Proxy Group]
 🚀 节点选择 = select, 🇺🇸 美国,🇭🇰 香港,🇯🇵 日本,🇸🇬 新加坡,🇹🇼 台湾
@@ -86,7 +83,6 @@ VPN utun{{ i }} = direct, interface=utun{{ i }}, allow-other-interface=true
 🔓 Unbreak = select, DIRECT
 🎯 全球直连 = select,𝐃𝐢𝐫𝐞𝐜𝐭
 🛑 全球拦截 = select,𝐃𝐢𝐫𝐞𝐜𝐭,𝐑𝐞𝐣𝐞𝐜𝐭
-🏢 内网VPN = select, {% for i in range(0, 16) %}VPN utun{{ i }}, {% endfor %}DIRECT
 🐟 漏网之鱼 = select,🚀 节点选择,🎯 全球直连,
 
 [Rule]
@@ -98,8 +94,9 @@ IP-CIDR,{{ relayNode.server }}/32,{{ relayNode.underlyingProxy }},no-resolve
 # VPS
 IP-CIDR,{{ customParams.vpsServer }}/32,{{ customParams.vpsUnderlyingProxy }},no-resolve
 
-# ByteDance Internal VPN
-{{ remoteSnippets.bytedance.main('🏢 内网VPN') }}
+# 公司域名直连（DNS 由 dns.js 按 SSID 切换：公司 WiFi 用网卡 DNS，否则用 127.0.0.1 飞连 stub）
+{% for d in customParams.companyDomainSuffixes %}DOMAIN-SUFFIX,{{ d }},DIRECT
+{% endfor %}
 
 {{ remoteSnippets.unbreak.main('🔓 Unbreak') }}
 {{ remoteSnippets.openai.main('🤖 OpenAI') }}
